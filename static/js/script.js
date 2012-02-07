@@ -1,5 +1,5 @@
 function getHtml() {
-  jQuery.post('/article', {url: $('input').val()}, function (data) {
+  jQuery.get('/article', {url: $('input').val()}, function (data) {
     $('textarea').html(data.content);
   })
 };

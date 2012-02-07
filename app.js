@@ -21,8 +21,8 @@ app.get('/', function (req, res) {
   res.render('index');
 })
 
-app.post('/article', function (req, res) {
-  var url = req.body.url;
+app.get('/article', function (req, res) {
+  var url = req.query.url;
   request.get({
     uri: "http://www.readability.com/api/content/v1/parser?token=" + config.apiToken + "&url=" + url,
     form: true

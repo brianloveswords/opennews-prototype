@@ -13,7 +13,10 @@ app.register('hogan.js',adapter.init(hogan));
 
 app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, "static")));
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 app.get('/', function (req, res) {
   res.render('index');

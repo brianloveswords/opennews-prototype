@@ -6,8 +6,6 @@ var request = require('request')
   , hogan = require('hogan.js')
   , adapter = require('./hogan-express.js')
 
-var url = "http://blog.readability.com/2011/02/step-up-be-heard-readability-ideas/";
-
 var app = express.createServer();
 
 app.set('view engine','hogan.js');

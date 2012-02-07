@@ -1,0 +1,17 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+#body {
+  width: 500px;
+  margin: auto;
+}
+
+input {
+  font-size: 1.3em;
+  width: 500px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  width: 500px;
+  height: 500px;
+}

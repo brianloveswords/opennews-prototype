@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "static")));
 
 app.get('/', function (req, res) {
   res.render('index');
-})
+});
 
 app.get('/article', function (req, res) {
   var url = req.query.url;
@@ -31,6 +31,6 @@ app.get('/article', function (req, res) {
     res.contentType('json');
     res.send(response);
   });
-})
+});
 
 module.exports = app;

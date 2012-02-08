@@ -32,7 +32,7 @@ app.get('/article', function (req, res) {
     var response = JSON.parse(body),
         html = response.content;
     
-    
+    console.dir(html);
     bleach(html, function (err, text) {
       res.contentType('text/html');
       res.send(text);

@@ -4,7 +4,6 @@ var request = require('request')
   , express = require('express')
   , path = require('path')
   , hogan = require('hogan.js')
-  , bleach = require('./lib/bleach')
   , adapter = require('./hogan-express.js')
 
 var app = express.createServer();
@@ -24,7 +23,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/article', function (req, res) {
-  var url = req.query.url;
+  var url = req.query.url
+    , raw = !!req.query.raw;
   request.get({
     uri: "http://www.readability.com/api/content/v1/parser?token=" + config.apiToken + "&url=" + url,
     form: true
@@ -32,11 +32,9 @@ app.get('/article', function (req, res) {
     var response = JSON.parse(body),
         html = response.content;
     
-    console.dir(html);
-    bleach(html, function (err, text) {
-      res.contentType('text/html');
-      res.send(text);
-    })
+    console.log(html);
+    if (raw) return res.send(html);
+        else return res.send(html.replace(/<.*?>/g, ''));
   });
 });
 
